@@ -1,0 +1,25 @@
+name: New Feature Submission
+description: Submit a New Feature
+title: "[new-feature]: "
+labels: ["new-feature", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for creating a report! The issue has entered the triage process. That means the issue will wait in this status until a Bug Marshal has an opportunity to review the issue. Once the issue has been reviewed you will receive comments regarding the next steps towards resolution. Please note that log messages and other files should not be sent to the Sangoma Asterisk Team unless explicitly asked for. All files should be placed on this issue in a sanitized fashion as needed.
+
+      A good first step is for you to review the [FreePBX Issue Guidelines](https://sangomakb.atlassian.net/wiki/spaces/FP/pages/10355381/FreePBX+Ticket+Reporting) if you haven't already. The guidelines detail what is expected from the FreePBX issue report.
+
+        Then, if you are submitting a patch, please review the Patch Contribution Process.
+
+        Please note that by submitting data, code, or documentation to Sangoma through GitHub, you accept the Terms of Use present at
+        https://www.asterisk.org/terms-of-use/.      
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: Describe the new feature in as much detail as possible
+    validations:
+      required: true
+

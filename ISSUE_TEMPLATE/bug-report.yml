@@ -1,0 +1,85 @@
+name: Bug
+description: File a bug report
+title: "[bug]: "
+labels: ["bug", "triage"]
+#assignees:
+#  - octocat
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for creating a report! The issue has entered the triage process. That means the issue will wait in this status until a Bug Marshal has an opportunity to review the issue. Once the issue has been reviewed you will receive comments regarding the next steps towards resolution. Please note that log messages and other files should not be sent to the Sangoma Asterisk Team unless explicitly asked for. All files should be placed on this issue in a sanitized fashion as needed.
+
+      A good first step is for you to review the [FreePBX Issue Guidelines](https://sangomakb.atlassian.net/wiki/spaces/FP/pages/10355381/FreePBX+Ticket+Reporting) if you haven't already. The guidelines detail what is expected from the FreePBX issue report.
+
+        Then, if you are submitting a patch, please review the Patch Contribution Process.
+
+        Please note that by submitting data, code, or documentation to Sangoma through GitHub, you accept the Terms of Use present at
+        https://www.asterisk.org/terms-of-use/.      
+        Thanks for taking the time to fill out this bug report!
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Trivial
+        - Minor
+        - Major
+        - Critical
+        - Blocker
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Enter one or more versions separated by commas.
+    validations:
+      required: true
+  - type: input
+    id: components
+    attributes:
+      label: Components/Modules
+      description: Enter one or more components or modules separated by commas.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Operating Environment
+      description: OS,  Disribution, Version, etc.
+    validations:
+      required: true
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: Frequency of Occurrence
+      options:
+        - "Never"
+        - "One Time"
+        - "Occasional"
+        - "Frequent"
+        - "Constant"
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: markdown
+    attributes:
+      value: |
+        [FreePBX Issue Guidelines](https://sangomakb.atlassian.net/wiki/spaces/FP/pages/10355381/FreePBX+Ticket+Reporting) 
+  - type: checkboxes
+    id: guidelines
+    attributes:
+      label: FreePBX Issue Guidelines
+      options:
+        - label: Yes, I have read the FreePBX Issue Guidelines
+          required: true
