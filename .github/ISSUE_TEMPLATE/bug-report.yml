@@ -23,8 +23,8 @@ body:
     attributes:
       label: FreePBX Version
       options:
-        - FreePBX 17
         - FreePBX 16
+        - FreePBX 17
         - FreePBX 15
         - FreePBX 13/14
     validations:
@@ -42,20 +42,103 @@ body:
         - Blocker
     validations:
       required: true
+
   - type: input
-    id: versions
+    id: fpbxmodlist
     attributes:
-      label: Versions
-      description: Enter one or more versions separated by commas.
+      label: FreePBX modules version list
+      description: Running modules version list (fwconsole ma list output)
     validations:
       required: false
-  - type: input
-    id: components
-    attributes:
-      label: Components/Modules
-      description: Enter one or more components or modules separated by commas.
+
+  - type: dropdown
+    id: modulename
     validations:
       required: true
+    attributes:
+      label: Affected Module
+      options:
+        - Framework
+        - Core
+        - sipsettings
+        - voicemail
+        - ucp
+        - userman
+        - certman
+        - calendar
+        - arimanager
+        - timeconditions
+        - cel
+        - cdr
+        - contactmanager
+        - bulkhandler
+        - firewall
+        - pm2
+        - api
+        - filestore
+        - amd
+        - ringgroups
+        - recordings
+        - queues
+        - paging
+        - logfiles
+        - ivr
+        - findmefollow
+        - fax
+        - dashboard
+        - callrecording
+	- superfecta
+        - hotelwakeup
+        - parking
+        - dahdiconfig
+        - announcement
+        - asterisk-cli
+        - asteriskinfo
+        - backup
+        - blacklist
+        - callback
+        - callforward
+        - callwaiting
+        - cidlookup
+        - conferences
+        - customappsreg
+        - daynight
+        - dictate
+        - digiumaddoninstaller
+        - digium_phones
+        - directory
+        - disa
+        - donotdisturb
+        - dundicheck
+        - extensionsettings
+        - featurecodeadmin
+        - iaxsettings
+        - infoservices
+        - languages
+        - manager
+        - miscapps
+        - miscdests
+        - music
+        - outroutemsg
+        - pbdirectory
+        - phonebook
+        - pinsets
+        - printextensions
+        - queueprio
+        - restart
+        - setcid
+        - speeddial
+        - tts
+        - vmblast
+        - weakpasswords
+        - webrtc
+    	- presencestate
+        - cxpanel
+        - soundlang
+        - configedit
+        - xmpp
+        - ttsengines
+
   - type: textarea
     id: environment
     attributes:
@@ -96,6 +179,3 @@ body:
       options:
         - label: Yes, I have read the FreePBX Issue Guidelines
           required: true
-
-  includes:
-    common_fields.yml
