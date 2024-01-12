@@ -6,7 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for creating a report! The issue has entered the triage process. That means the issue will wait in this status until a Bug Marshal has an opportunity to review the issue. Once the issue has been reviewed you will receive comments regarding the next steps towards resolution. Please note that log messages and other files should not be sent to the Sangoma Asterisk Team unless explicitly asked for. All files should be placed on this issue in a sanitized fashion as needed.
+
+        Thanks for creating a report! The issue has entered the triage (open) process. That means the issue will wait in this status until the FreePBX team has an opportunity to review the issue. Our weekly triage meetings happen every Monday. Once the issue has been reviewed you may receive comments regarding the next steps towards resolution.
 
       A good first step is for you to review the [FreePBX Issue Guidelines](https://sangomakb.atlassian.net/wiki/spaces/FP/pages/10355381/FreePBX+Ticket+Reporting) if you haven't already. The guidelines detail what is expected from the FreePBX issue report.
 
@@ -22,4 +23,3 @@ body:
       description: Describe the new feature in as much detail as possible
     validations:
       required: true
-
