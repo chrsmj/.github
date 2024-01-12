@@ -96,3 +96,6 @@ body:
       options:
         - label: Yes, I have read the FreePBX Issue Guidelines
           required: true
+
+  includes:
+    common_fields.yml

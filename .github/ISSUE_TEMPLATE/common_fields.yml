@@ -1,0 +1,7 @@
+- type: input
+    id: fpbxmodlist
+    attributes:
+      label: FreePBX modules version list
+      description: Running modules version list (fwconsole ma list output) 
+    validations:
+      required: false
