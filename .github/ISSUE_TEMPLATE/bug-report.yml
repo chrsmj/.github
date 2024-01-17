@@ -43,51 +43,24 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: fpbxmodlist
-    attributes:
-      label: FreePBX modules version list
-      description: Running modules version list (fwconsole ma list output)
-    validations:
-      required: false
-
-  - type: textarea
-    id: environment
-    attributes:
-      label: Operating Environment
-      description: FreePBX Framework version, Asterisk version etc.
-    validations:
-      required: true
-  - type: dropdown
-    id: frequency
-    attributes:
-      label: Frequency of Occurrence
-      options:
-        - "Never"
-        - "One Time"
-        - "Occasional"
-        - "Frequent"
-        - "Constant"
   - type: textarea
     id: description
     attributes:
       label: Issue Description
     validations:
       required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Operating Environment
+      description: FreePBX Framework version, Asterisk version , modules version(fwconsole ma list output) etc.
+    validations:
+      required: true
+  
   - type: textarea
     id: logs
     attributes:
       label: Relevant log output
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
-  - type: markdown
-    attributes:
-      value: |
-        [FreePBX Issue Guidelines](https://sangomakb.atlassian.net/wiki/spaces/FP/pages/10355381/FreePBX+Ticket+Reporting) 
-  - type: checkboxes
-    id: guidelines
-    attributes:
-      label: FreePBX Issue Guidelines
-      options:
-        - label: Yes, I have read the FreePBX Issue Guidelines
-          required: true
