@@ -1,0 +1,88 @@
+name: PRSubmitActions
+run-name: "PRSubmitActions: Test ${{github.event.action}}"
+on:
+  workflow_run:
+    workflows: [PRSubmitTests]
+    types:
+      - requested
+      - completed
+env:
+  ACTION:     ${{ github.event.action }}
+  CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+  REPO:       ${{ github.repository }}
+
+jobs:
+  PRSubmitActions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR Number
+        id: getpr
+        uses: actions/github-script@v6
+        with:
+          retries: 5
+          script: |
+            let search = `repo:${context.repo.owner}/${context.repo.repo} ${context.payload.workflow_run.head_sha}`; 
+            let prs = await github.rest.search.issuesAndPullRequests({
+                 q: search,
+              });
+            if (prs.data.total_count == 0) {
+              core.setFailed(`Unable to get PR for ${context.payload.workflow_run.head_sha}`);
+              return;
+            }
+            let pr_number = prs.data.items[0].number;
+            core.setOutput('pr_number', pr_number);
+            return;
+
+      - name: Set Label
+        id: setlabel
+        uses: actions/github-script@v6
+        env:
+          PR_NUMBER:  ${{ steps.getpr.outputs.PR_NUMBER }}
+          LABEL_TIP:  ${{ vars.PR_SUBMIT_TESTING_IN_PROGRESS }}
+          LABEL_PASS: ${{ vars.PR_SUBMIT_TESTS_PASSED }}
+          LABEL_FAIL: ${{ vars.PR_SUBMIT_TESTS_FAILED }}
+        with:
+          retries: 5
+          script: |
+            let label;
+            label = process.env.PR_LABEL;
+            core.info(`Setting label ${label}`);
+            github.rest.issues.setLabels({
+              issue_number: process.env.PR_NUMBER,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: [ label ]
+            });
+            return;
+
+      - name: Add reviewers
+        if: github.event.action == 'completed'
+        uses: actions/github-script@v6
+        env:
+          PR_NUMBER: ${{steps.getpr.outputs.PR_NUMBER}}
+          REVIEWERS: ${{vars.PR_REVIEWERS}}
+        with:
+          retries: 5
+          script: |
+            let rs = JSON.parse(process.env.REVIEWERS);
+            let users = [];
+            let teams = [];
+            for (const r of rs) {
+              if (r.indexOf("/") > 0) {
+                teams.push(r.split('/')[1]);
+              } else {
+                users.push(r);
+              }
+            }
+            if (teams.length > 0 || users.length > 0) {
+              core.info(`Adding user reviewers ${users}`);
+              core.info(`Adding team reviewers ${teams}`);
+              await github.pulls.requestReviewers({
+                pull_number: process.env.PR_NUMBER,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                reviewers: users,
+                team_reviewers: teams
+              });
+            }
+            return;
