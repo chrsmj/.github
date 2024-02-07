@@ -30,19 +30,6 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: severity
-    attributes:
-      label: Severity
-      options:
-        - Trivial
-        - Minor
-        - Major
-        - Critical
-        - Blocker
-    validations:
-      required: true
-
   - type: textarea
     id: description
     attributes:
