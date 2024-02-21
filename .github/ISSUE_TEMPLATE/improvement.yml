@@ -16,6 +16,18 @@ body:
         Please note that by submitting data, code, or documentation to Sangoma through GitHub, you accept the Terms of Use present at
         https://www.asterisk.org/terms-of-use/.
         Thanks for taking the time to fill out this bug report!
+
+  - type: dropdown
+    id: fpbxver
+    attributes:
+      label: FreePBX Version
+      options:
+        - FreePBX 16
+        - FreePBX 17
+        - FreePBX 15
+    validations:
+      required: true
+
   - type: textarea
     id: description
     attributes:
