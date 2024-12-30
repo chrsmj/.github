@@ -8,6 +8,8 @@ Sangoma takes the security of our software products and services seriously. We a
 
 If you believe you have found a security vulnerability please report it to us through the Security reporting process on GitHub.
 
+For FreePBX, use the "Report a vulnerability" button at the top of the [FreePBX Security Reporting repository](https://github.com/FreePBX/security-reporting/security).
+
 **Please do not report security vulnerabilities through any other mechanisms, including public mechansims.**
 
 Please include as much of the information listed below as you can to help us better understand and resolve the issue:
